@@ -1,0 +1,9 @@
+export { default as Delete } from "./Delete";
+export { default as Header } from "./Header";
+export { default as Magnifier } from "./icons/Magnifier";
+export { default as PopUpEdit } from "./PopUpEdit";
+export { default as Register } from "./Register";
+export { default as Response } from "./Response";
+export { default as Table } from "./Table";
+export { default as TableItem } from "./Table/TableItem";
+export { default as PaginationTable } from "./PaginationTable";
