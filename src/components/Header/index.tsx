@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
-import { IButtonProp } from "../../../types";
+import { IButtonProp } from "@Types";
 import "./style.css";
 
 const PageHeader: React.FC<IButtonProp> = ({ text, NavigateButton }) => {

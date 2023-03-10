@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
-import { IResponsePopUp } from "../../../types";
+import { IResponsePopUp } from "@Types";
 
 const ResponsePopUp: React.FC<IResponsePopUp> = (props) => {
   return (

@@ -1,12 +1,7 @@
 import React, { useState, memo } from "react";
 import Table from "react-bootstrap/Table";
-import { ICat, ICats, ITableAPIProps } from "../../../types";
-import {
-  Delete as DeleteAPI,
-  PaginationTable,
-  PopUpEdit,
-  TableItem,
-} from "../index";
+import { ICat, ITableAPIProps } from "@Types";
+import { Delete as DeleteAPI, PopUpEdit, TableItem } from "../index";
 
 const TableAPI: React.FC<ITableAPIProps> = ({
   cats,
@@ -71,7 +66,6 @@ const TableAPI: React.FC<ITableAPIProps> = ({
           ))}
         </tbody>
       </Table>
-      {/* <PaginationTable /> */}
     </>
   );
 };

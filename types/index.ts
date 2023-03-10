@@ -44,3 +44,7 @@ export interface IPagination {
   current: number;
   onChangePage: (value: number) => void;
 }
+export interface ISelect {
+  value: number;
+  onChangeRow: (size: number) => void;
+}

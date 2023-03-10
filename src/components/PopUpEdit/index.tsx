@@ -1,4 +1,4 @@
-import { ICat, IPopUp } from "../../../types";
+import { ICat, IPopUp } from "@Types";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
@@ -24,7 +24,7 @@ const PopUpEdit: React.FC<IPopUp> = (props) => {
       breed: modal?.breed,
       age: Number(modal?.age) ? Number(modal?.age) : undefined,
     });
-    // props.HideModal();
+    props.HideModal();
     await props.LoadAnimals();
     setModalShow(true);
   };

@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { ICat, IResponsePopUp } from "../../../types";
+import { ICat } from "@Types";
 import { api } from "../../services/api";
 import ResponsePopUp from "../Response";
 

@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import { ButtonToolbar, ButtonGroup, Button } from "react-bootstrap";
 import { BsFillPenFill, BsFillTrashFill } from "react-icons/bs";
-import { ITable } from "../../../../types";
+import { ITable } from "@Types";
 
 const TableItem: React.FC<ITable> = ({
   cat,

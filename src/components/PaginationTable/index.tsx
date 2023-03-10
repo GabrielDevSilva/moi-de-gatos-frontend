@@ -8,7 +8,7 @@ const PaginationTable: React.FC<IPagination> = ({
   onChangePage,
 }) => {
   return (
-    <Pagination>
+    <Pagination className="danger">
       {current > 1 && (
         <Pagination.Prev key="prev" onClick={() => onChangePage(current - 1)} />
       )}
@@ -19,6 +19,7 @@ const PaginationTable: React.FC<IPagination> = ({
           active={index + 1 === current}
           onClick={() => onChangePage(index + 1)}
           //   style={{ color: "red" }}
+          className="danger"
         >
           {index + 1}
         </Pagination.Item>

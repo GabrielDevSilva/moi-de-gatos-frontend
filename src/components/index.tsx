@@ -7,3 +7,4 @@ export { default as Response } from "./Response";
 export { default as Table } from "./Table";
 export { default as TableItem } from "./Table/TableItem";
 export { default as PaginationTable } from "./PaginationTable";
+export { default as Select } from "./Select";

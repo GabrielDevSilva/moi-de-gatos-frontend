@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Modal, Button } from "react-bootstrap";
-import { IPopUp } from "../../../types";
+import { IPopUp } from "@Types";
 import { api } from "../../services/api";
 import ResponsePopUp from "../Response";
 
@@ -9,7 +9,7 @@ const DeleteAPI: React.FC<IPopUp> = (props) => {
   async function deleteCat() {
     try {
       await api.delete(`/cats/${props.cat.id}`);
-      // props.HideModal();
+      props.HideModal();
       await props.LoadAnimals();
     } catch (error) {
       setReturnError((error as Error).message);

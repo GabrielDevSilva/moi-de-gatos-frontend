@@ -1,10 +1,11 @@
 import { useEffect, useState, useCallback } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { ICats } from "../../../types";
+import { ICats } from "@Types";
 import {
   Header as PageHeader,
   PaginationTable,
+  Select,
   Table as TableAPI,
 } from "../../components";
 import { api } from "../../services/api";
@@ -16,9 +17,12 @@ const Home: React.FC = () => {
   const [totalPage, setTotalPage] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [tableRows, setTableRows] = useState(5);
+  const [sortColumns, setSortColumns] = useState("ASC");
 
   const loadAnimals = useCallback(async () => {
-    let url = `/cats?skip=${(currentPage - 1) * tableRows}&take=${tableRows}`;
+    let url = `/cats?skip=${
+      (currentPage - 1) * tableRows
+    }&take=${tableRows}&order=${sortColumns}`;
     if (debouncedSearchTerm) {
       url = `/cats/name/${debouncedSearchTerm}?skip=${
         (currentPage - 1) * tableRows
@@ -33,12 +37,13 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     loadAnimals();
-  }, [debouncedSearchTerm, currentPage, totalPage]);
+  }, [debouncedSearchTerm, currentPage, totalPage, tableRows]);
 
   useEffect(() => {
     const debouncedTime = setTimeout(() => {
       setDebouncedSearchTerm(searchCat);
     }, 500);
+    setCurrentPage(1);
     return () => {
       clearTimeout(debouncedTime);
     };
@@ -66,15 +71,26 @@ const Home: React.FC = () => {
       </InputGroup>
       <TableAPI cats={cats} LoadAnimals={loadAnimals} />
       <br />
-      <PaginationTable
-        total={Math.ceil(totalPage / tableRows)}
-        current={currentPage}
-        onChangePage={(pageNumber: number) =>
-          setCurrentPage((prevState) =>
-            prevState !== pageNumber ? pageNumber : prevState
-          )
-        }
-      />
+      <div className="d-flex justify-content-between dark">
+        <Select
+          value={tableRows}
+          onChangeRow={(pageSize: number) => {
+            setTableRows(pageSize);
+            setCurrentPage(1);
+          }}
+        />
+        {totalPage > tableRows && (
+          <PaginationTable
+            total={Math.ceil(totalPage / tableRows)}
+            current={currentPage}
+            onChangePage={(pageNumber: number) =>
+              setCurrentPage((prevState) =>
+                prevState !== pageNumber ? pageNumber : prevState
+              )
+            }
+          ></PaginationTable>
+        )}
+      </div>
     </div>
   );
 };
